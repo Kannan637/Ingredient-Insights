@@ -40,6 +40,10 @@ function Home() {
   const toggleModal = () => {
     setModal(!modal);
   };
+  var mywindow;
+  function opennew(){
+    mywindow = window.open("","","width=500,height=500")
+  }
 
   return (
     <>
@@ -102,7 +106,7 @@ function Home() {
               <button id="add"><span className="material-symbols-outlined">add</span></button>
             </div>
             <div className="four-icons-nav">
-              <button id="history"><span className="material-symbols-outlined">history</span></button>
+              <button id="history" onClick={opennew}><span className="material-symbols-outlined">history</span></button>
               <button id="explore"><span className="material-symbols-outlined">explore</span></button>
               <button id="shareBtn"><span className="material-symbols-outlined">share</span></button>
               <button id="logout"><span className="material-symbols-outlined">logout</span></button>

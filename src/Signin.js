@@ -4,8 +4,18 @@ import { Link } from "react-router-dom";
 import search from './search.png';
 
 function log() {
+  const passwordInput = document.getElementById('password');
+const toggleButton = document.getElementById('toggle');
 
-
+toggleButton.addEventListener('click', () => {
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    toggleButton.textContent = 'visibility_off';
+  } else {
+    passwordInput.type = 'password';
+    toggleButton.textContent = 'visibility';
+  }
+});
 
 
 

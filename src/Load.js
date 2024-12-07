@@ -1,7 +1,32 @@
 import { Link } from "react-router-dom";
 import './Page.css';
+import React, { useEffect, useState } from 'react';
 
 export default function Load() {
+  useEffect(() => {
+    const handleShare = () => {
+      if (navigator.share) {
+        navigator.share({
+          title: '#',
+          url: 'http://localhost:3000/'
+        }).then(() => {
+          console.log('Thanks for sharing!');
+        }).catch(err => {
+          console.log("Error while using Web share API:");
+          console.log(err);
+        });
+      } else {
+        alert("Browser doesn't support this API!");
+      }
+    };
+
+    const shareButton = document.querySelector('#shareBtn');
+    shareButton.addEventListener('click', handleShare);
+    return () => {
+      shareButton.removeEventListener('click', handleShare);
+    };
+  }, []);
+
     return (
         <>
         <div className="container">
@@ -44,7 +69,7 @@ export default function Load() {
           <div className="four-icons-nav">
             <button id="history"><span className="material-symbols-outlined">history</span></button>
             <button id="explore"><span className="material-symbols-outlined">explore</span></button>
-            <button id="share"><span className="material-symbols-outlined">share</span></button>
+            <button id="shareBtn"><span className="material-symbols-outlined">share</span></button>
             <button id="logout"><span className="material-symbols-outlined">logout</span></button>
           </div>
         </div>
